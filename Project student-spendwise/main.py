@@ -8,17 +8,27 @@ expenses = {
 print("Welcome to Student SpendWise")
 
 while True:
-    item_type = input("What type of expense is this? (Food, Fun, Bills, Other) (or type 'stop' to exit): ")
+    available_categories = " , ".join([cat.capitalize() for cat in expenses.keys()])
+    promt_text = f"What type of expense is this? ({available_categories}) (or type 'stop' to exit): "
+    item_type = input(promt_text)
+
     if item_type.lower() == 'stop': # Added .lower() to handle 'Stop' or 'STOP'
         break
-    item = input("What did you buy? (or type 'stop' to exit): ")
-    if item.lower() == 'stop': # Added .lower() to handle 'Stop' or 'STOP'
-        break
+
+    category = item_type.lower()
     
-    price = int(input("How much did it cost? "))
-    
-    # Adding the item and price to our dictionary
-    expenses[item] = price
+    if category not in expenses:
+       expenses[category] = {} 
+       print (f"Added new category: {category}")
+
+    item_name = input(f"What did you buy in {category}? ")
+
+    try:
+        price = int(input(f"How much for {item_name}? "))
+        expenses[category][item_name] = price
+    except ValueError:
+        print("Please enter a valid number for the price.")
+        continue
 
 
 
