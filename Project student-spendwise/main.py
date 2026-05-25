@@ -1,3 +1,6 @@
+import streamlit as st
+import pandas as pd
+
 def display_budget_status(expenses, budget):
     total_spent = sum(price for category in expenses.values() for price in category.values())
     print(f"Total spent: ${total_spent}")
