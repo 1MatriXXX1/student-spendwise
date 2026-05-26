@@ -1,0 +1,11 @@
+{
+    "expenses": {
+        "Food": {
+            "Food": 123.0
+        },
+        "Fun": {},
+        "Bills": {},
+        "Other": {}
+    },
+    "budget": 0
+}
